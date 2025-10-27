@@ -25,24 +25,25 @@ Another important aspect of DEA is the assumption on returns to scale. In this r
 main formulations, the CCR model (Charnes, Cooper, Rhodes) and the BCC model (Banker, Charnes,
 Cooper). The first assumes constant returns to scale (CRS), meaning that an increase in inputs will lead to a proportional increase in outputs. The second assumes variable returns to scale (VRS), meaning it separates the inefficiencies due to scale from those due to pure technical inefficiency, and therefore compares DMUs of similar size \cite{banker1984}. 
 
-Even though the CCR model is a valuable measure of overall efficiency, as airports cannot easily adjust their scale, the BCC model is often more appropriate in this context and will, therefore, be the model applied in this work. \eqnref{input_dea} and \eqnref{output_dea} present the formulations for the input-oriented and output-oriented BCC models, respectively. \eqnref{eq:bcc_constraints} and \eqnref{eq:bcc_constraints_output} represent the respective constraints for each model. The main difference between the CCR and BCC models is the inclusion of the convexity constraint (i.e., \(\sum_j \lambda_j = 1\)), which ensures that an inefficient DMU is only benchmarked against similar sized DMUs. 
-\begin{center}
-\textbf{Input-oriented BCC Model}
-\end{center}
-\begin{equation}
-    \label{input_dea}
-min_{\theta,\lambda} \quad \theta
-\end{equation}
-subject to
-\begin{equation}
-\label{eq:bcc_constraints}
-\begin{gathered}
-\sum_j x_{i,j}\lambda_j \leq \theta x_{i,o} \quad \text{for } i=1,\ldots,m \\
-\sum_j y_{r,j} \lambda_j \geq y_{r,o} \quad \text{for } r=1,\ldots,s \\
-\sum_j \lambda_j = 1 \\
-\lambda_j \geq 0
-\end{gathered}
-\end{equation}
+Even though the CCR model is a valuable measure of overall efficiency, as airports cannot easily adjust their scale, the BCC model is often more appropriate in this context and will, therefore, be the model applied in this work. \eqnref{output_dea} present the formulation for the output-oriented BCC model. \eqnref{eq:bcc_constraints_output} represent the respective constraints . The main difference between the CCR and BCC models is the inclusion of the convexity constraint (i.e., \(\sum_j \lambda_j = 1\)), which ensures that an inefficient DMU is only benchmarked against similar sized DMUs. 
+
+%\begin{center}
+%\textbf{Input-oriented BCC Model}
+%\end{center}
+%\begin{equation}
+ %   \label{input_dea}
+%min_{\theta,\lambda} \quad \theta
+%\end{equation}
+%subject to
+%\begin{equation}
+%\label{eq:bcc_constraints}
+%\begin{gathered}
+%\sum_j x_{i,j}\lambda_j \leq \theta x_{i,o} \quad \text{for } i=1,%\ldots,m \\
+%\sum_j y_{r,j} \lambda_j \geq y_{r,o} \quad \text{for } r=1,\ldots,s \\
+%\sum_j \lambda_j = 1 \\
+%\lambda_j \geq 0
+%\end{gathered}
+%\end{equation}
 
 \vspace{0.5cm}
 \begin{center}
@@ -62,6 +63,8 @@ subject to
 \lambda_j \geq 0
 \end{gathered}
 \end{equation}
+
+To obtain the input-oriented version, the function of \eqnref{output_dea} is replaced by \(min_{\theta,\lambda} \quad \theta\), and the two first inequations are reversed, keeping the rest the same.
 
 Having obtained the efficiency scores using both the CCR and BCC models,
 it is possible to obtain the scale efficiency (SE) of an airport. SE measures the loss that a DMU suffers
@@ -126,7 +129,7 @@ variable. To overcome the above problems, the bootstrap technique is applied. Th
 by \cite{simar2007} enables consistent inference in the second stage regression, by addressing
 the dependency problem, while simultaneously correcting for bias and estimating variance and confidence intervals. 
 To facilitate the interpretation of the required steps and their sequential order for the implementation
-of algorithm 2 of \cite{simar2007}, \autoref{fig:simarwilson} provides a flowchart detailing the 7-step procedure.
+of algorithm 2 of \cite{simar2007}, \figref{fig:simarwilson} provides a flowchart detailing the 7-step procedure.
 
 \begin{figure}[H]
 \centering
@@ -160,13 +163,14 @@ of algorithm 2 of \cite{simar2007}, \autoref{fig:simarwilson} provides a flowcha
 \label{fig:simarwilson}
 \end{figure}
 
-\subsection{Malmquist Productivity Index (MPI)}
-\label{mpi}
-
  Although the DEA methodology provides an accurate
 static measure of relative efficiency for each year, it does not fully capture how productivity evolves over
 time. To address this limitation, the Malmquist Productivity Index (MPI) is also applied, to provide a
 dynamic perspective on efficiency changes.
+
+\subsection{Malmquist Productivity Index (MPI)}
+\label{mpi}
+
 
 MPI evaluates the productivity change of a DMU, in our case an airport, by calculating the ratio of
 the distance to the frontier in two different time periods, t and t + 1, relative to a common reference
@@ -198,7 +202,10 @@ output-based MPI as the geometric mean of the index from \eqnref{eq:MI1}, using 
 
 \begin{equation}
     \label{eq:MI3}
-\resizebox{1\linewidth}{!}{$MPI_{o} = \left[ \left( \frac{D^{t}_{o}(x_{t+1}, y_{t+1})}{D^{t}_{o}(x_{t}, y_{t})} \right) \left( \frac{D^{t+1}_{o}(x_{t+1}, y_{t+1})}{D^{t+1}_{o}(x_{t}, y_{t})} \right) \right]^{1/2}$}
+\begin{aligned}
+MPI_{o} &= \left[ \left( \frac{D^{t}_{o}(x_{t+1}, y_{t+1})}{D^{t}_{o}(x_{t}, y_{t})} \right) \right. \\
+&\quad \left. \left( \frac{D^{t+1}_{o}(x_{t+1}, y_{t+1})}{D^{t+1}_{o}(x_{t}, y_{t})} \right) \right]^{1/2}
+\end{aligned}
 \end{equation}
 
 According to \cite{fare1994},  an equivalent way of writing the index of \eqnref{eq:MI3} is:

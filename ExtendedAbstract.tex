@@ -77,6 +77,15 @@
 %% http://www.ctan.org/tex-archive/help/Catalogue/entries/float.html
 \usepackage{float}
 
+%% Enhanced table packages
+\usepackage{array}      % Enhanced array and tabular environments
+\usepackage{tabularx}   % Flexible width tables
+\usepackage{booktabs}   % Professional quality tables with \toprule, \midrule, \bottomrule
+\usepackage{longtable}  % Tables that can span multiple pages
+\usepackage{multirow}   % Multi-row cells in tables
+\usepackage{multicol}   % Multiple columns with \begin{multicols}{n}
+\usepackage{caption}    % Enhanced captions and \captionof command
+
 %% Control sectional headers. 
 %% http://www.ctan.org/tex-archive/help/Catalogue/entries/sectsty.html
 \usepackage{sectsty}
@@ -130,7 +139,8 @@
 
 % New command to refer to equations as Eq.(1),Eq.(2),...
 \newcommand{\eqnref}[1]{Eq.(\ref{#1})}
-
+\newcommand{\figref}[1]{Fig.\ref{#1}}
+\newcommand{\tabref}[1]{Tab.\ref{#1}}
 
   \renewcommand{\figureautorefname}{Figure}%
   \renewcommand{\tableautorefname}{Table}%
@@ -181,11 +191,14 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % RESULTS
+
+\clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{ExtendedAbstract_resul}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CONCLUSIONS
+\clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{ExtendedAbstract_concl}
 

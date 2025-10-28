@@ -11,7 +11,7 @@
 
 \section{Methodology}
 \label{sec:imple}
-This section outlines the methodology to be applied throughout this study, namely Data Envelopment Analysis (DEA), Truncated Regression, and the Malmquist Productivity Index (MPI). 
+%This section outlines the methodology to be applied throughout this study, namely Data Envelopment Analysis (DEA), Truncated Regression, and the Malmquist Productivity Index (MPI). 
 \subsection{Data Envelopment Analysis (DEA)}
 \label{dea}
 DEA is a non-parametric method used to evaluate the efficiency of Decision Making Units (DMUs) that convert inputs into outputs, by comparing each DMU to a best-practice frontier. The calculated efficiency is relative and is
@@ -26,6 +26,9 @@ main formulations, the CCR model (Charnes, Cooper, Rhodes) and the BCC model (Ba
 Cooper). The first assumes constant returns to scale (CRS), meaning that an increase in inputs will lead to a proportional increase in outputs. The second assumes variable returns to scale (VRS), meaning it separates the inefficiencies due to scale from those due to pure technical inefficiency, and therefore compares DMUs of similar size \cite{banker1984}. 
 
 Even though the CCR model is a valuable measure of overall efficiency, as airports cannot easily adjust their scale, the BCC model is often more appropriate in this context and will, therefore, be the model applied in this work. \eqnref{output_dea} present the formulation for the output-oriented BCC model. \eqnref{eq:bcc_constraints_output} represent the respective constraints . The main difference between the CCR and BCC models is the inclusion of the convexity constraint (i.e., \(\sum_j \lambda_j = 1\)), which ensures that an inefficient DMU is only benchmarked against similar sized DMUs. 
+
+
+To obtain the input-oriented version, the function of \eqnref{output_dea} is replaced by \(min_{\theta,\lambda} \quad \theta\), and the two first inequations are reversed, keeping the rest the same.
 
 %\begin{center}
 %\textbf{Input-oriented BCC Model}
@@ -44,8 +47,8 @@ Even though the CCR model is a valuable measure of overall efficiency, as airpor
 %\lambda_j \geq 0
 %\end{gathered}
 %\end{equation}
-
-\vspace{0.5cm}
+\clearpage
+\vspace{-0.4cm}
 \begin{center}
 \textbf{Output-oriented BCC Model}
 \end{center}
@@ -63,26 +66,21 @@ subject to
 \lambda_j \geq 0
 \end{gathered}
 \end{equation}
+\vspace{-0.4cm}
 
-To obtain the input-oriented version, the function of \eqnref{output_dea} is replaced by \(min_{\theta,\lambda} \quad \theta\), and the two first inequations are reversed, keeping the rest the same.
 
 Having obtained the efficiency scores using both the CCR and BCC models,
 it is possible to obtain the scale efficiency (SE) of an airport. SE measures the loss that a DMU suffers
 for not operating at optimal scale, and it is calculated as the ratio between the efficiency scores obtained
-using CRS and VRS \cite{bogetoft2011}:
-
-\begin{equation}
-    \label{eq:scale_efficiency}
-SE = \frac{E_{CRS}}{ E_{VRS}}
-\end{equation} 
-
+using CRS and VRS \cite{bogetoft2011}.
 The value of SE, is always between 0 and 1, since the efficiency score obtained using the CCR model is always less than or equal to that obtained using the BCC model. An SE value of 1 indicates that the DMU is operating at optimal scale, while a value less than 1 indicates that it is not.
 
 Analyzing the value of SE does not provide information on the type of scale inefficiency, i.e., whether
-the DMU is operating at increasing or decreasing returns to scale. To identify the nature of the returns to
+the DMU is operating at increasing (IRS) or decreasing returns to scale (DRS). To identify the nature of the returns to
 scale, another model as to be used: the non-increasing returns to scale (NIRS) model, which is derived
 from the BCC model by replacing the \(\sum_j \lambda_j = 1\) restriction with \(\sum_j \lambda_j \leq 1\) \cite{coelli2005}. \eqnref{eq:rts_definition} summarizes the classification criteria for the different RTS that can be identified
 by comparing the models explained above \cite{huguenin2012}.
+\vspace{-0.5cm}
 
 \begin{equation}
 \label{eq:rts_definition}
@@ -93,10 +91,11 @@ CRS, & \text{if } E_{NIRS} = E_{VRS} = E_{CRS} \\
 DRS, & \text{if } E_{NIRS} = E_{VRS} \neq E_{CRS}
 \end{cases}
 \end{equation}
- 
-Efficiency scores obtained using DEA can be influenced not only by management decisions and scale
-operation conditions, but also by different exogenous factors. Second-stage regressions are usually
-applied to identify the effect of these factors, in which the DEA efficiency values obtained in the first
+ \vspace{-0.3cm}
+
+DEA efficiency scores can be influenced not only by management decisions and scale
+operation conditions, but also by exogenous factors. Second-stage regressions are usually
+applied to identify the effect of these factors, in which the DEA scores obtained in the first
 stage are regressed against a set of potential explanatory variables. In this study, a truncated regression
 is going to be applied.
 
@@ -105,36 +104,38 @@ is going to be applied.
 
 Following \cite{simar2007}, a double bootstrapping procedure is applied in the second-stage
 truncated regression that is given by:
+\vspace{-0.3cm}
+
 \begin{equation}
 \label{eq:regression}
 \hat{\theta_i}=\alpha+\beta Z_i + \varepsilon_i, \quad i=1,\ldots,n   
 \end{equation}
+\vspace{-0.1cm}
 where
+\vspace{-0.1cm}
 \begin{equation}
 \label{eq:noise}
 \varepsilon_i \sim N(0, \sigma_\varepsilon^2), \quad \text{such that} \quad \varepsilon_i \geq 1 - \alpha - Z_i \beta
 \end{equation}
+\vspace{-0.6cm}
+
 which is estimated by maximizing the corresponding likelihood function.
 
 $\hat{\theta_i}$ represents the bias corrected efficiency value of the $n$ DMUs, $\alpha$ a constant term, $\beta$ the vector of
 regression coefficients, $Z_i$ a set of explanatory variables used to evaluate the efficiency scores and $\varepsilon_i$ a
 random variable accounting for statistical noise. 
 
-In previous efficiency studies employing DEA, a common practice for estimating the model in \eqnref{eq:regression} had been to employ a censored regression (Tobit). However, \cite{simar2007} demonstrated that this approach is inappropriate because efficiency scores are always higher than 0 and below or equal to 1, meaning the data is truncated at this value rather than censored. Consequently, using a censored regression model would lead to a bias in the estimation.
-
 Since the DEA efficiency scores are relative and not absolute, there is a strong statistical depen-
 dency between each observation. Therefore, using them directly in a second-stage regression may
 violate fundamental assumptions of regression analysis, such as the independence of the dependent
 variable. To overcome the above problems, the bootstrap technique is applied. The double bootstrap approach proposed
 by \cite{simar2007} enables consistent inference in the second stage regression, by addressing
-the dependency problem, while simultaneously correcting for bias and estimating variance and confidence intervals. 
-To facilitate the interpretation of the required steps and their sequential order for the implementation
-of algorithm 2 of \cite{simar2007}, \figref{fig:simarwilson} provides a flowchart detailing the 7-step procedure.
+the dependency problem, while simultaneously correcting for bias and estimating variance and confidence intervals.  \figref{fig:simarwilson} provides a flowchart detailing the 7-step procedure of algorithm 2 of \cite{simar2007}.
 
-\begin{figure}[H]
+\begin{figure}[h!]
 \centering
 \begin{tikzpicture}[
-  node distance=4mm,
+  node distance=2.7mm,
   box/.style={
     rectangle, draw, rounded corners,
     text width=60mm, inner sep=2mm, font=\small,
@@ -159,10 +160,13 @@ of algorithm 2 of \cite{simar2007}, \figref{fig:simarwilson} provides a flowchar
   \draw[arrow] (s5) -- (s6);
   \draw[arrow] (s6) -- (s7);
 \end{tikzpicture}
+\vspace{-0.2cm}
 \caption{Algorithm 2 flowchart based on \cite{simar2007}.}
 \label{fig:simarwilson}
 \end{figure}
 
+
+\clearpage
  Although the DEA methodology provides an accurate
 static measure of relative efficiency for each year, it does not fully capture how productivity evolves over
 time. To address this limitation, the Malmquist Productivity Index (MPI) is also applied, to provide a
@@ -171,34 +175,24 @@ dynamic perspective on efficiency changes.
 \subsection{Malmquist Productivity Index (MPI)}
 \label{mpi}
 
-
 MPI evaluates the productivity change of a DMU, in our case an airport, by calculating the ratio of
 the distance to the frontier in two different time periods, t and t + 1, relative to a common reference
 technology. Initially, \cite{caves1982} defined the MPI as follows:
-
+\vspace{-0.01cm}
 \begin{equation}   
     \label{eq:MI1} 
 M_{CCD,\,t} = \frac{D^{t}_{o}\left(x_{t+1}, y_{t+1}\right)}{D^{t}_{o}\left(x_{t}, y_{t}\right)}         
 \end{equation}
 
-
-
-
 where $\left(x^{t+1}, y^{t+1}\right)$ represents the input/output combination for the $t+1$ period, and $\left(x^{t}, y^{t}\right)$  for the $t$ period. $D^{t}_{o}\left(x^{t+1}, y^{t+1}\right)$ and $D^{t}_{o}\left(x^{t}, y^{t}\right)$ would then be the distance between the DMU observation in $t+1$ and $t$ periods, respectively, and the best practice frontier in the $t$ period, for airport $o$. 
 
-If one wants to consider the technology from the t + 1 period as the reference, the distance would be measured to the frontier in t + 1 period, meaning $D^{t}_{o}$ would be replaced by $D^{t+1}_{o}$, in the functions of \eqnref{eq:MI1}. To provide a visual illustration of the distance functions defined above, \autoref{fig:fronteiras_malmquist} displays the MPI
-distance functions, for $\text{DMU}_\text{X}$, when considering an input orientation.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=7.5cm]{images/fronteiras_malmquist.jpg}
-  \vspace{-0.5cm}
-  \caption{Malmquist Productivity Index distance functions for $\text{DMU}_\text{X}$.}
-  \label{fig:fronteiras_malmquist}
-\end{figure}
+If one wants to consider the technology from the t + 1 period as the reference, the distance would be measured to the frontier in t + 1 period, meaning $D^{t}_{o}$ would be replaced by $D^{t+1}_{o}$, in the functions of \eqnref{eq:MI1}. 
 
 In order to avoid the arbitrary selection of a reference technology, \cite{fare1994} specified the
 output-based MPI as the geometric mean of the index from \eqnref{eq:MI1}, using both reference technologies, given by:
+
+
+
 
 \begin{equation}
     \label{eq:MI3}
@@ -209,7 +203,7 @@ MPI_{o} &= \left[ \left( \frac{D^{t}_{o}(x_{t+1}, y_{t+1})}{D^{t}_{o}(x_{t}, y_{
 \end{equation}
 
 According to \cite{fare1994},  an equivalent way of writing the index of \eqnref{eq:MI3} is:
-
+\vspace{-0.5cm}
 
 \begin{equation}
 \label{eq:MPI}
@@ -236,7 +230,7 @@ calculation of Dt+1
 o
 (xt+1, yt+1) and Dt
 o(xt, yt) under VRS, which provides the value of PEC and allows
-the calculation of SEC, following the definition of \eqnref{eq:scale_efficiency}. 
+the calculation of SEC.
 
 A $MPI_{o}$ greater than one indicates an improvement in efficiency between periods t and t + 1. The
 same interpretation applies to the other all the other components of the MPI. Conversely, a value less

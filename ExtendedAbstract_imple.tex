@@ -8,27 +8,26 @@
 % A Calculation section represents a practical development
 % from a theoretical basis.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\vspace{-0.015cm}
 \section{Methodology}
 \label{sec:imple}
 %This section outlines the methodology to be applied throughout this study, namely Data Envelopment Analysis (DEA), Truncated Regression, and the Malmquist Productivity Index (MPI). 
 \subsection{Data Envelopment Analysis (DEA)}
 \label{dea}
 DEA is a non-parametric method used to evaluate the efficiency of Decision Making Units (DMUs) that convert inputs into outputs, by comparing each DMU to a best-practice frontier. The calculated efficiency is relative and is
-measured by the distance to the frontier, meaning a DMU is efficient if it lies on the frontier, and inefficient if it lies below it. 
+measured by the distance to the frontier, meaning a DMU is efficient if it lies on the frontier, and inefficient if it lies below it \cite{charnes1994}. 
 
 DEA models can be oriented in two ways: input or output oriented. In an input-oriented model the focus is on how much the inputs of a DMU can be proportionally reduced, without affecting the outputs
-produced. On the other hand, an output-oriented model focuses on increasing output quantities propor-
-tionally, while maintaining the same level of inputs \cite{charnes1994}. 
+produced. On the other hand, an output-oriented model focuses on increasing output quantities proportionally, while maintaining the same level of inputs \cite{charnes1994}. 
 
 Another important aspect of DEA is the assumption on returns to scale. In this regard there are two
 main formulations, the CCR model (Charnes, Cooper, Rhodes) and the BCC model (Banker, Charnes,
 Cooper). The first assumes constant returns to scale (CRS), meaning that an increase in inputs will lead to a proportional increase in outputs. The second assumes variable returns to scale (VRS), meaning it separates the inefficiencies due to scale from those due to pure technical inefficiency, and therefore compares DMUs of similar size \cite{banker1984}. 
+Even though the CCR model is a valuable measure of overall efficiency, as airports cannot easily adjust their scale, the BCC model is often more appropriate in real world contexts and will, therefore, be the model applied in this work.
 
-Even though the CCR model is a valuable measure of overall efficiency, as airports cannot easily adjust their scale, the BCC model is often more appropriate in this context and will, therefore, be the model applied in this work. \eqnref{output_dea} present the formulation for the output-oriented BCC model. \eqnref{eq:bcc_constraints_output} represent the respective constraints . The main difference between the CCR and BCC models is the inclusion of the convexity constraint (i.e., \(\sum_j \lambda_j = 1\)), which ensures that an inefficient DMU is only benchmarked against similar sized DMUs. 
-
-
-To obtain the input-oriented version, the function of \eqnref{output_dea} is replaced by \(min_{\theta,\lambda} \quad \theta\), and the two first inequations are reversed, keeping the rest the same.
+\eqnref{output_dea} presents the formulation for the output-oriented BCC model. 
+\eqnref{eq:bcc_constraints_output} represent the respective constraints. The main difference between the CCR and BCC models is the inclusion of the convexity constraint ( \(\sum_j \lambda_j = 1\)), which ensures that an inefficient DMU is only benchmarked against similar sized DMUs.
+To obtain the input-oriented version, the function of \eqnref{output_dea} is replaced by \(min_{\theta,\lambda} \quad \theta\), and the two first inequations are reversed, keeping the rest the same \cite{banker1984}.
 
 %\begin{center}
 %\textbf{Input-oriented BCC Model}
@@ -72,13 +71,13 @@ subject to
 Having obtained the efficiency scores using both the CCR and BCC models,
 it is possible to obtain the scale efficiency (SE) of an airport. SE measures the loss that a DMU suffers
 for not operating at optimal scale, and it is calculated as the ratio between the efficiency scores obtained
-using CRS and VRS \cite{bogetoft2011}.
-The value of SE, is always between 0 and 1, since the efficiency score obtained using the CCR model is always less than or equal to that obtained using the BCC model. An SE value of 1 indicates that the DMU is operating at optimal scale, while a value less than 1 indicates that it is not.
+using CRS and VRS.
+The value of SE, is always between 0 and 1, since the efficiency score obtained using the CCR model is always less than or equal to that obtained using the BCC model. An SE value of 1 indicates that the DMU is operating at optimal scale, while a value less than 1 indicates that it is not \cite{bogetoft2011}.
 
 Analyzing the value of SE does not provide information on the type of scale inefficiency, i.e., whether
 the DMU is operating at increasing (IRS) or decreasing returns to scale (DRS). To identify the nature of the returns to
-scale, another model as to be used: the non-increasing returns to scale (NIRS) model, which is derived
-from the BCC model by replacing the \(\sum_j \lambda_j = 1\) restriction with \(\sum_j \lambda_j \leq 1\) \cite{coelli2005}. \eqnref{eq:rts_definition} summarizes the classification criteria for the different RTS that can be identified
+scale, an additional model is needed: the non-increasing returns to scale (NIRS) model, which is derived
+from the BCC model by replacing the \(\sum_j \lambda_j = 1\) restriction with \(\sum_j \lambda_j \leq 1\). \eqnref{eq:rts_definition} summarizes the classification criteria for the different RTS that can be identified
 by comparing the models explained above \cite{huguenin2012}.
 \vspace{-0.5cm}
 
@@ -128,7 +127,9 @@ random variable accounting for statistical noise.
 Since the DEA efficiency scores are relative and not absolute, there is a strong statistical depen-
 dency between each observation. Therefore, using them directly in a second-stage regression may
 violate fundamental assumptions of regression analysis, such as the independence of the dependent
-variable. To overcome the above problems, the bootstrap technique is applied. The double bootstrap approach proposed
+variable \cite{simar2007}. 
+To overcome the above problems, the bootstrap technique is applied. 
+The double bootstrap approach proposed
 by \cite{simar2007} enables consistent inference in the second stage regression, by addressing
 the dependency problem, while simultaneously correcting for bias and estimating variance and confidence intervals.  \figref{fig:simarwilson} provides a flowchart detailing the 7-step procedure of algorithm 2 of \cite{simar2007}.
 
@@ -160,15 +161,14 @@ the dependency problem, while simultaneously correcting for bias and estimating 
   \draw[arrow] (s5) -- (s6);
   \draw[arrow] (s6) -- (s7);
 \end{tikzpicture}
-\vspace{-0.2cm}
+\vspace{-0.1cm}
 \caption{Algorithm 2 flowchart based on \cite{simar2007}.}
 \label{fig:simarwilson}
 \end{figure}
 
-
-\clearpage
+\vspace{-0.2cm}
  Although the DEA methodology provides an accurate
-static measure of relative efficiency for each year, it does not fully capture how productivity evolves over
+static measure of efficiency for each year, it does not fully capture how productivity evolves over
 time. To address this limitation, the Malmquist Productivity Index (MPI) is also applied, to provide a
 dynamic perspective on efficiency changes.
 
@@ -181,7 +181,7 @@ technology. Initially, \cite{caves1982} defined the MPI as follows:
 \vspace{-0.01cm}
 \begin{equation}   
     \label{eq:MI1} 
-M_{CCD,\,t} = \frac{D^{t}_{o}\left(x_{t+1}, y_{t+1}\right)}{D^{t}_{o}\left(x_{t}, y_{t}\right)}         
+MPI_{o} = \frac{D^{t}_{o}\left(x_{t+1}, y_{t+1}\right)}{D^{t}_{o}\left(x_{t}, y_{t}\right)}         
 \end{equation}
 
 where $\left(x^{t+1}, y^{t+1}\right)$ represents the input/output combination for the $t+1$ period, and $\left(x^{t}, y^{t}\right)$  for the $t$ period. $D^{t}_{o}\left(x^{t+1}, y^{t+1}\right)$ and $D^{t}_{o}\left(x^{t}, y^{t}\right)$ would then be the distance between the DMU observation in $t+1$ and $t$ periods, respectively, and the best practice frontier in the $t$ period, for airport $o$. 
@@ -225,11 +225,7 @@ indicating whether there has been technological progress or regress over time.
 
 So far, the analysis has been conducted under constant returns to scale (CRS). However, the first
 term (EC) can be further decomposed into Pure Efficiency Change (PEC), associated with VRS, and
-Scale Efficiency Change (SEC). To obtain this full decomposition, two additional programming problems are required, namely the
-calculation of Dt+1
-o
-(xt+1, yt+1) and Dt
-o(xt, yt) under VRS, which provides the value of PEC and allows
+Scale Efficiency Change (SEC). To obtain this full decomposition, two additional programming problems are required, namely the calculation of $D^{t+1}_{o}(x_{t+1}, y_{t+1})$ and $D^{t}_{o}(x_{t}, y_{t})$ under VRS, which provides the value of PEC and allows
 the calculation of SEC.
 
 A $MPI_{o}$ greater than one indicates an improvement in efficiency between periods t and t + 1. The

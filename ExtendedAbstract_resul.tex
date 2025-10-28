@@ -17,11 +17,11 @@
 \section{Results}
 \label{sec:resul}
 In this section, the dataset used is described and the results obtained are presented. First, the descriptive statistics are provided, then the DEA scores are obtained, followed by the truncated regression analysis, and finally the Malmquist index results.
-\subsection{Dataset description}
+\subsection{Descriptive Statistics}
 \label{subsec:resul_data}
 Our dataset includes 41 Iberian airports, including 5 in Portugal and 36 in Spain, over a period of eight years (2016-2023). Following the airport size definition from \cite{ripoll-zarraga2020}, \figref{fig:mapa} displays a map with the geographical location of the airports and their respective sizes.  
 
-
+\vspace{-0.25cm}
 \begin{figure}[h!]
   \centering
   \includegraphics[width=8cm]{images/mapa.jpg}
@@ -30,13 +30,14 @@ Our dataset includes 41 Iberian airports, including 5 in Portugal and 36 in Spai
   \label{fig:mapa}
 \end{figure}
 
+\vspace{-0.3cm}
 DEA models require the identification of the inputs and outputs of the analysis. As DEA is not a
-statistical technique, there is no systematic approach for the selection of inputs and outputs, therefore the first practical criterion for selecting these
+statistical technique, there is no systematic approach for the selection of inputs and outputs, thus the first practical criterion for selecting these
 variables is data availability. \tabref{tab:variables} lists these variables
 and summarizes their main descriptive statistics, namely the minimum (Min.), maximum (Max.), mean,
 and standard deviation (St. Dev.) values.
 
-
+\clearpage
 \begin{table}[h!]
   \begin{center}
     \caption{Summary Statistics for Input and Output Variables (2016–2023)}
@@ -63,14 +64,11 @@ and standard deviation (St. Dev.) values.
 \end{table}
   \vspace{-0.5cm}
 Even though this selection of input variables does not fully
-represent the most common variables in the literature review conducted in \autoref{sec:backg} due to data availability constraints, it is still in line with the previous literature.
-
-It is important to highlight that only physical measures of capital were considered in this analysis. This
-approach was necessary since airport-level financial data stopped being published, following Aena’s partial privatization in 2014.
+represent the most common variables in the literature review conducted in \autoref{sec:backg}, due to data availability constraints, it is still in line with the previous literature. It is important to highlight that only physical measures of capital were considered in this analysis, since airport-level financial data stopped being published, following Aena’s partial privatization in 2014.
 
 Regarding the second-stage regression, \tabref{tab:exp_statistics} lists the explanatory variables used in the second-stage regression to explain DEA efficiency scores.
 
-
+\vspace{-0.2cm}
 \begin{table}[h!]
   \begin{center}
         \caption{Summary Statistics for explanatory variables}
@@ -97,7 +95,7 @@ Island is a binary variable indicating whether an airport is located on an islan
 mainland (Mainland=0). The inclusion of this variable is justified, as 13 out of the 49 airports in the
 dataset operate on an island. Military is another binary variable indicating whether there are military
 operations at the airport. In the considered dataset, 11 out of the 41 airports operate as mixed civil-military airports.
-Share of cargo represents the percentage of cargo in the total WLU and Share of LCC passengers represents the percentage of low-cost carrier (LCC) passengers in the total
+Share of cargo represents the percentage of cargo in the total WLU and Share of LCC passengers the percentage of low-cost carrier (LCC) passengers in the total
 number of passengers. 
 Additionally, a novel input in Iberian airport efficiency studies was included: the existence of a railway connection inside the airport. This variable was included to capture the impact of intermodal connectivity on airport efficiency.
 
@@ -115,10 +113,10 @@ different years considered. For that, an output oriented DEA model under Variabl
 
 The choice of output orientation is particularly appropriate in the context of Iberian airports, since
 most of the Spanish airports operate with overcapacity, meaning the existing infrastructure is underutilized \cite{nerja2021}. As some of the airport inputs are considered fixed in the short and medium term, airport managers have limited capacity to adjust input levels,
-and should, therefore, focus on maximizing their utilization \cite{martin2001}. Regarding the returns to scale, VRS was assumed due to the large size difference between the airports considered, as shown in \figref{fig:mapa}. Nonetheless, the CRS
+and should, therefore, focus on maximizing their utilization \cite{martin2001}. Regarding the returns to scale, VRS was assumed due to the size differences between the airports considered, as shown in \figref{fig:mapa}. Nonetheless, the CRS
 scores were also determined for the calculation of Scale efficiencies. 
 
-\tabref{tab:crs,vrs,scale} presents the bootstrapped results obtained for each airport. It includes the average efficiency scores for Constant Returns to Scale (CRS), Variable Returns to Scale (VRS), and Scale efficiency (Scale) for each airport. It should be noted that the biased scores were also calculated for comparison, even though they are not presented here for brevity. Following the definition in \eqnref{eq:rts_definition}, the last column indicates the type of returns to scale (RTS) each airport is operating, which can
+\tabref{tab:crs,vrs,scale} presents the DEA bootstrapped results obtained for each airport. It includes the average efficiency scores for Constant Returns to Scale (CRS), Variable Returns to Scale (VRS), and Scale efficiency (Scale) for each airport. It should be noted that the biased scores were also calculated for comparison, even though they are not presented for brevity. Following the definition in \eqnref{eq:rts_definition}, the last column indicates the type of returns to scale (RTS) each airport is operating, which can
 be either Increasing Returns to Scale (IRS), Decreasing Returns to Scale (DRS), or Constant Returns to Scale (CRS). As this study analyzes a period of 8 years, different classifications can be obtained in
 different years. In \tabref{tab:crs,vrs,scale}, the most common classification will be displayed. In cases where the two
 most common classifications are observed the same number of times across the eight-year period, both
@@ -134,9 +132,18 @@ value of 0.823 for Madrid-Barajas airport, meaning none of the considered airpor
 frontier. Regarding scale efficiency, the average bootstrapped scale efficiency is 0.854, indicating that
 Iberian airports are not operating at their optimal scale.
 
-\clearpage
+Regarding the returns to scale (RTS) classification, out of the 41 airports considered, 21 operate
+under IRS. This result further confirms the fact that a majority of airports in the Spanish centralized
+system are underutilized and have the potential to increase their efficiency by expanding their operation,
+as argued by \cite{nerja2021}. On the other hand, a smaller set of 9 airports operate under DRS, meaning
+they could improve their efficiency by reducing their operations. Out of the 41 airports, 7 of them obtained
+more than one classification. Only 4 airports were classified
+with CRS, meaning they operate at their optimal scale. Analyzing the Portuguese airports, it can be
+observed that all operate under IRS. 
+
+\vspace{-0.2cm}
 %\renewcommand{\arraystretch}{0.9}
-\begin{table}[t!]
+\begin{table}[h!]
 \centering
 \caption{Bootstrapped average CRS, VRS and Scale efficiencies.} 
 \vspace{-0.2cm}
@@ -200,15 +207,9 @@ Mean excluding COVID & 0.436 & 0.522 & 0.859 & \\
 }
 \end{table}
 
-\vspace{-1cm}
-Regarding the returns to scale (RTS) classification, out of the 41 airports considered, 21 operate
-under IRS. This result further confirms the fact that a majority of airports in the Spanish centralized
-system are underutilized and have the potential to increase their efficiency by expanding their operation,
-as argued by \cite{nerja2021}. On the other hand, a smaller set of 9 airports operate under DRS, meaning
-they could improve their efficiency by reducing their operations. Out of the 41 airports, 7 of them obtained
-more than one classification. Only 4 airports were classified
-with CRS, meaning they operate at their optimal scale. Analyzing the Portuguese airports, it can be
-observed that all operate under IRS.
+\vspace{-0.2cm}
+
+
 
 For a better comparison of the performance of the considered airports, \figref{fig:boxplot} presents a boxplot  
 graph displaying the minimum, first quartile, median, third quartile and maximum values of the boot-
@@ -216,6 +217,14 @@ strapped VRS efficiency scores, for each airport, over the years considered. For
 the results, a dotted line was added to indicate the average efficiency score of 0.522. Also, the data for
 the COVID years (2020 and 2021) was excluded from the boxplot, as they are not representative of the
 airports’ normal operation. However, they are still included in the graph and marked by red dots.
+
+Analyzing \figref{fig:boxplot}, and considering the median value of each box, it is possible to observe
+that, from the 41 airports, 24 present above average efficiencies, with Madrid-Barajas, Barcelona and
+Zaragoza obtaining the highest efficiency scores, while San Sebastian, Valladolid and Vigo being the
+least efficient airports. Following the airport size definition presented in \figref{fig:mapa}, 16 of the 24 airports
+with above average efficiency are large, while 14 of the 17 below average airports are small or medium
+sized. This result suggests that larger airports tend to be more efficient. 
+
   \vspace{-0.4cm}
 
 \begin{figure}[h!]
@@ -225,14 +234,8 @@ airports’ normal operation. However, they are still included in the graph and 
   \caption{Boxplots of the bootstrapped VRS efficiency scores, for each airport.}
   \label{fig:boxplot}
 \end{figure}
-  \vspace{-0.3cm}
 
-Analyzing \figref{fig:boxplot}, and considering the median value of each box, it is possible to observe
-that, from the 41 airports, 24 present above average efficiencies, with Madrid-Barajas, Barcelona and
-Zaragoza obtaining the highest efficiency scores, while San Sebastian, Valladolid and Vigo being the
-least efficient airports. Following the airport size definition presented in Table 4.1, 16 of the 24 airports
-with above average efficiency are large, while 14 of the 17 below average airports are small or medium
-sized. This result suggests that larger airports tend to be more efficient. 
+\vspace{-0.3cm}
 
 Considering the Portuguese airports, only Madeira airport is considered inefficient, with Lisbon being
 the most efficient, followed by Porto, Ponta Delgada and Faro. The average efficiency for Portuguese
@@ -250,7 +253,7 @@ After computing the DEA efficiency scores in the first stage, a second-stage tru
 was conducted to address DEA’s main limitation, which is its inability to explain the effect of some
 determinants in the efficiency scores. The regression was applied to the bootstrapped DEA scores, using the explanatory variables described in \tabref{tab:exp_statistics}, under the following model:
 
-\vspace{-0.1cm}
+\vspace{-0.6cm}
 \begin{equation}
     \label{eq:complete_regression}
 \begin{aligned}
@@ -259,13 +262,19 @@ determinants in the efficiency scores. The regression was applied to the bootstr
 \end{aligned}
 \end{equation}
 
-\clearpage
 \tabref{tab:regression_results} reports the coefficients and p-values for the variables considered in both the biased and
 bootstrapped models. For binary variables, the coefficient represents the estimated change in the effi-
 ciency score when the specific variable applies, while for continuous variables, the coefficient reflects
 the marginal effect on the efficiency score of a one-unit increase in the corresponding variable \cite{simar2007}.
 
-
+Analyzing the results, it is possible to observe that the coefficients of the variables are similar across
+both models, with the bootstrapped model presenting consistently lower values. Starting by the Island
+variable, its coefficient is positive and statistically significant at the 1\% significance level in both models,
+indicating that airports located on islands are, on average, 18.58\% and 16.90\% more efficient than
+those located on the mainland, respectively. It can also be concluded that the presence of Military operations in the airport contributes positively
+on the efficiency, with a coefficient of 8.22\% in the biased model and 6.44\% in the bootstrapped one, with
+the former being statistically significant at the 10\% significance level and the latter at the 5\% significance
+level.
 \begin{table}[h!]
 \centering
 \caption{Truncated regression results.}
@@ -293,14 +302,7 @@ Share of LCC & -0.0016 & 0.0234^{**} && 0.0007 & 0.1670 \\
 \end{table}
 
 \vspace{-0.5cm}
-Analyzing the results, it is possible to observe that the coefficients of the variables are similar across
-both models, with the bootstrapped model presenting consistently lower values. Starting by the Island
-variable, its coefficient is positive and statistically significant at the 1\% significance level in both models,
-indicating that airports located on islands are, on average, 18.58\% and 16.90\% more efficient than
-those located on the mainland, respectively. It can also be concluded that the presence of Military operations in the airport contributes positively
-on the efficiency, with a coefficient of 8.22\% in the biased model and 6.44\% in the bootstrapped one, with
-the former being statistically significant at the 10\% significance level and the latter at the 5\% significance
-level. Regarding the novel explanatory variable in Iberian airport studies, Rail existence, it achieved the
+ Regarding the novel explanatory variable in Iberian airport studies, Rail existence, it achieved the
 highest coefficient, from all variables and revealed to be statistically significant at the 1\% level, in both
 models. An Iberian airport with a conventional rail connection is, on average, 48.95\% more efficient in
 the biased model and 38.28\% in the bootstrapped one, respectively, than one without such a connection. Focusing on the effect the share of cargo transport has on airport efficiency, it is possible to observe
@@ -321,7 +323,7 @@ To complement the obtained static DEA scores, the Malmquist Productivity Index
 period (2016-2023). The dynamic evaluation that this methodology offers becomes especially important
 for a period that includes an external shock as the COVID-19 pandemic, since it allows for a better
 understanding of the impact of such events in airport performance, not only in the affected years (in this
-case 2020 and 2021), but also in the subsequent recovery years.
+case, 2020 and 2021), but also in the subsequent recovery years.
 
 \tabref{tab:malmquist_summary} presents the geometric means of the MPI for the Iberian airports, as well as the four components it can be decomposed into: Technological Change (TECHC), Efficiency Change (EC), which is further divided into Pure Efficiency Change (PEC) and Scale Efficiency Change (SEC). Two additional notes must be done: first, the MPI calculations were made without accounting for the bias present in
 the DEA scores, i.e., no bootstrapping technique was applied, as no function in the softwares (RStudio
@@ -330,15 +332,24 @@ the decomposition of EC, due to failure in the estimation of PEC (that is obtain
 analysis under VRS), namely for the airports El Hierro, La Gomera, Leon and Ponta Delgada.
 
 
-Analyzing \tabref{tab:malmquist_summary}, it is possible to observe that, on average, Iberian airports experienced a productivity growth of 3.82\% over the period considered, with 37 out of the 41 airports showing improvement (MPI > 1). The main driver of this productivity growth was Efficiency Change (EC), which increased by 3.27\%, while Technological Change (TECHC) contributed with a smaller increase of 0.58\%. This result indicates that most of the productivity growth was due to improvements in how efficiently airports utilized their resources, rather than advancements in technology or infrastructure. An expected result is that the highest values of Technological Change (TECHC) are concentrated in
+Analyzing \tabref{tab:malmquist_summary}, it is possible to observe that, on average, Iberian airports experienced a productivity growth of 3.82\% over the period considered, with 37 out of the 41 airports showing improvement  (MPI $>$ 1). The main driver of this productivity growth was Efficiency Change (EC), which increased by 3.27\%, while Technological Change (TECHC) contributed with a smaller increase of 0.58\%. This result indicates that most of the productivity growth was due to improvements in how efficiently airports utilized their resources, rather than advancements in technology or infrastructure. An expected result is that the highest values of Technological Change (TECHC) are concentrated in
 the largest airports as Madrid-Barajas, Barcelona, Lisbon, Porto and Valencia, with values ranging from
 1.0367 to 1.0848. When analyzing the decomposition of EC, it is possible to observe that the average Pure Efficiency
 Change (PEC) increased by 2.96\%, while Scale Efficiency Change (SEC) slightly decreased by 0.24\%.
 This suggests that most of the efficiency improvements were due to better management and operational
 practices, rather than changes in the scale of operations.
-\clearpage
+
+
+The best performing airports in the considered period were Badajoz, Leon and Valencia. The latter
+achieved the highest MPI, with a value of 1.1265, indicating a significant productivity growth of 12.65\%.
+This growth was mainly driven by a strong increase in EC (8.66\%), with both PEC and SEC contributing
+positively to the efficiency change. Leon and Badajoz also showed strong performance, with MPIs of
+1.1234 and 1.1119, respectively, driven by improvements in efficiency rather than advancements of the
+frontier. Unfortunately, for Leon the decomposition of EC cannot be analyzed but for Badajoz, unlike
+Valencia a decrease of 7.87\% in the scale efficiency was registered.
+\vspace{-0.2cm}
 %\renewcommand{\arraystretch}{0.9}
-\begin{table}[t!]
+\begin{table}[h!]
 \centering
 \caption{Geometric mean of Malmquist Productivity Index (MPI) and its components for each airport} 
 \label{tab:malmquist_summary}
@@ -399,20 +410,13 @@ Zaragoza & 1.0031 & 1.0031 & 1.0000 & 1.0000 & 1.0000 \\
 \end{tabular}%
 }
 \end{table}
+\vspace{-0.2cm}
 
 
-The best performing airports in the considered period were Badajoz, Leon and Valencia. The latter
-achieved the highest MPI, with a value of 1.1265, indicating a significant productivity growth of 12.65\%.
-This growth was mainly driven by a strong increase in EC (8.66\%), with both PEC and SEC contributing
-positively to the efficiency change. Leon and Badajoz also showed strong performance, with MPIs of
-1.1234 and 1.1119, respectively, driven by improvements in efficiency rather than advancements of the
-frontier. Unfortunately, for Leon the decomposition of EC cannot be analyzed but for Badajoz, unlike
-Valencia a decrease of 7.87\% in the scale efficiency was registered.
 
-As previously said, 4 airports presented a decrease in efficiency, namely Faro, FGL Granada, Sala-
-manca and Tenerife-Sur. Faro had the lowest MPI, with a value of 0.9550, indicating a productivity
+As already mentioned, 4 of the 41 airports presented a decrease in efficiency, namely Faro, FGL Granada, Salamanca and Tenerife-Sur. Faro had the lowest MPI, with a value of 0.9550, indicating a productivity
 decline of 4.50\%. This result is explained by a decrease in TECHC (0.80\%) and EC (3.73\%), with both
-PEC and SEC contributing negatively to the efficiency change result. FGL Granada also experienced a
+PEC and SEC contributing negatively to the EC result. FGL Granada also experienced a
 slight decline in productivity, with an MPI of 0.9974, driven by a decrease in TECHC (2.42\%) despite the
 increase in EC (2.21\%). Salamanca and Tenerife-Sur had similar MPI results, with values of 0.9863 and
 0.9818, respectively. Both airports experienced declines in TECHC (1.71\% and 0.12\%, respectively)
@@ -427,7 +431,7 @@ year.
 \vspace{-0.5cm}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=8cm]{images/malmquist_plot.png}
+  \includegraphics[width=8.2cm]{images/malmquist_plot.png}
   \vspace{-0.5cm}
   \caption{Average of Malmquist Productivity Index (MPI) and its components for each year}
   \label{fig:malmquist}

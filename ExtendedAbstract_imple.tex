@@ -100,13 +100,12 @@ is going to be applied.
 \subsection{Truncated Regression} 
 \label{truncreg}
 
-Following \cite{simar2007}, a double bootstrapping procedure is applied in the second-stage
-truncated regression that is given by:
+Following \cite{simar2007}, a second-stage truncated regression is applied:
 \vspace{-0.3cm}
 
 \begin{equation}
 \label{eq:regression}
-\hat{\theta_i}=\alpha+\beta Z_i + \varepsilon_i, \quad i=1,\ldots,n   
+\theta_i=\alpha+\beta Z_i + \varepsilon_i, \quad i=1,\ldots,n   
 \end{equation}
 \vspace{-0.1cm}
 where
@@ -119,7 +118,7 @@ where
 
 which is estimated by maximizing the corresponding likelihood function.
 
-$\hat{\theta_i}$ represents the bias corrected efficiency value of the $n$ DMUs, $\alpha$ a constant term, $\beta$ the vector of
+$\theta_i$ represents the efficiency value of the $n$ DMUs, $\alpha$ a constant term, $\beta$ the vector of
 regression coefficients, $Z_i$ a set of explanatory variables used to evaluate the efficiency scores and $\varepsilon_i$ a
 random variable accounting for statistical noise. 
 

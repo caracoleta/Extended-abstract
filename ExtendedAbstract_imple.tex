@@ -105,14 +105,14 @@ Following \cite{simar2007}, a second-stage truncated regression is applied:
 
 \begin{equation}
 \label{eq:regression}
-\theta_i=\alpha+\beta Z_i + \varepsilon_i, \quad i=1,\ldots,n   
+\theta_i=\alpha+\beta_i Z_i + \varepsilon_i, \quad i=1,\ldots,n   
 \end{equation}
 \vspace{-0.1cm}
 where
 \vspace{-0.1cm}
 \begin{equation}
 \label{eq:noise}
-\varepsilon_i \sim N(0, \sigma_\varepsilon^2), \quad \text{such that} \quad \varepsilon_i \geq 1 - \alpha - Z_i \beta
+\varepsilon_i \sim N(0, \sigma_\varepsilon^2), \quad \text{such that} \quad \varepsilon_i \geq 1 - \alpha - Z_i \beta_i
 \end{equation}
 \vspace{-0.6cm}
 
@@ -175,13 +175,12 @@ dynamic perspective on efficiency changes.
 
 MPI evaluates the productivity change of a DMU, in our case an airport, by calculating the ratio of
 the distance to the frontier in two different time periods, t and t + 1, relative to a common reference
-technology. Initially, \cite{caves1982} defined the MPI as follows:
+technology. Initially, \cite{caves1982} defined the MPI as:
 \vspace{-0.01cm}
 \begin{equation}   
     \label{eq:MI1} 
 MPI_{o} = \frac{D^{t}_{o}\left(x_{t+1}, y_{t+1}\right)}{D^{t}_{o}\left(x_{t}, y_{t}\right)}         
 \end{equation}
-
 where $\left(x^{t+1}, y^{t+1}\right)$ represents the input/output combination for the $t+1$ period, and $\left(x^{t}, y^{t}\right)$  for the $t$ period. $D^{t}_{o}\left(x^{t+1}, y^{t+1}\right)$ and $D^{t}_{o}\left(x^{t}, y^{t}\right)$ would then be the distance between the DMU observation in $t+1$ and $t$ periods, respectively, and the best practice frontier in the $t$ period, for airport $o$. 
 
 If one wants to consider the technology from the t + 1 period as the reference, the distance would be measured to the frontier in t + 1 period, meaning $D^{t}_{o}$ would be replaced by $D^{t+1}_{o}$, in the functions of \eqnref{eq:MI1}. 
@@ -211,13 +210,13 @@ MPI_{o} &= \underbrace{\frac{D^{t+1}_{o}(x_{t+1}, y_{t+1})}{D^{t}_{o}(x_{t}, y_{
 \frac{D^{t}_{o}(x_{t+1}, y_{t+1})}{D^{t+1}_{o}(x_{t+1}, y_{t+1})} 
 \times 
 \frac{D^{t}_{o}(x_{t}, y_{t})}{D^{t+1}_{o}(x_{t}, y_{t})} 
-\right]^{1/2}}_{\text{Technological Change (TC)}}
+\right]^{1/2}}_{\text{Technological Change (TECHC)}}
 \end{aligned}
 \end{equation}
 
 
 This formulation decomposes \eqnref{eq:MI3} into two different components: Efficiency change (EC)
-and Technological change (TC). The former evaluates if the airport’s efficiency is getting closer or further
+and Technological change (TECHC). The former evaluates if the airport’s efficiency is getting closer or further
 away from the best practice frontier (catching-up effect). The latter captures shifts in the frontier itself,
 indicating whether there has been technological progress or regress over time.
 
@@ -227,5 +226,5 @@ Scale Efficiency Change (SEC). To obtain this full decomposition, two additional
 the calculation of SEC.
 
 A $MPI_{o}$ greater than one indicates an improvement in efficiency between periods t and t + 1. The
-same interpretation applies to the other all the other components of the MPI. Conversely, a value less
+same interpretation applies to the components of the MPI. Conversely, a value less
 than one indicates a decline in efficiency
